@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         colorSquare.layer.borderColor = UIColor.blackColor().CGColor
         //colorSquare.layer.borderWidth = 0.5
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        redSlider.value = defaults.floatForKey("red")
+        greenSlider.value = defaults.floatForKey("green")
+        blueSlider.value = defaults.floatForKey("blue")
+        
         self.updateBackgroundColor()
     }
 
@@ -39,6 +44,12 @@ class ViewController: UIViewController {
         
         colorSquare.layer.cornerRadius = CGFloat(11.5)
         colorSquare.backgroundColor = UIColor(red:red, green:green, blue:blue, alpha:1.0)
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setFloat(redSlider.value, forKey: "red")
+        defaults.setFloat(greenSlider.value, forKey: "green")
+        defaults.setFloat(blueSlider.value, forKey: "blue")
+        defaults.synchronize()
         
     }
     
